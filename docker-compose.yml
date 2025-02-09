@@ -1,0 +1,49 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: my-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - /home/sarralab/Desktop/project/cookapp.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    build: ./Cookingapp-cookappbackend/Cookingapp-cookappbackend  # Path to Spring Boot project
+    container_name: my-spring-app
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://my-mysql:3306/mydb
+      SPRING_DATASOURCE_USERNAME: myuser
+      SPRING_DATASOURCE_PASSWORD: mypassword
+    ports:
+      - "8082:8082"
+    mem_limit: 512m
+
+  frontend:
+    build: 
+      context: ./Cookingapp-main  # Path to Angular project
+      dockerfile: Dockerfile
+    container_name: my-angular-app
+    depends_on:
+      - backend
+    ports:
+      - "4200:80"
+    volumes:
+      - ./Cookingapp-main:/app  # Ensures live updates (optional)
+    mem_limit: 1024m
+
+
+volumes:
+  mysql_data:
+

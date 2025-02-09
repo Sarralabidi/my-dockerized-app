@@ -1,0 +1,145 @@
+/* General Body Styles */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #f9f9f9, #f0f8ff);
+   
+    margin: 0;
+    padding: 0;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+    background: #4caf50;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 4px solid #388e3c;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 800px; /* Set a max-width for header */
+}
+
+/* Container Styles */
+.container {
+    width: 90%;
+    max-width: 800px; /* Limit container width */
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Form Container Styles */
+.form-container {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px; /* Increased space below the form */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.form-container h2 {
+    margin-top: 0;
+    color: #4caf50;
+    font-size: 1.3em;
+}
+
+/* Input and Button Styles */
+.form-container input, .form-container button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-top: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.9em;
+}
+
+.form-container input {
+    background: #f9f9f9;
+}
+
+.form-container button {
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.form-container button:hover {
+    background: #45a049;
+    transform: translateY(-1px);
+}
+
+.form-container button:active {
+    transform: translateY(0);
+}
+
+.results {
+    margin-top: 20px;
+}
+
+.item-card {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #b5dbb6;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox {
+    margin-right: 15px;
+}
+
+.item-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.item-details {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.details-left {
+    flex-grow: 1;
+}
+
+.details-right {
+    margin-left: 20px; /* Add some space between the left details and the right category */
+    text-align: right;
+    font-weight: bold;
+    color: #333;
+}
+
+.checkbox {
+    margin-right: 15px;
+}
+
+.price {
+    font-weight: bold;
+    color: #333;
+}
+.category{
+    margin-right: 15px;
+
+}

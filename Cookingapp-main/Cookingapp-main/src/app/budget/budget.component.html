@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="./budget.component.css">
+</head>
+<body>
+<div class="container">
+    <div class="form-container">
+        <h2>Enter Your Budget please here </h2>
+        <input type="number" [(ngModel)]="budget" placeholder="Enter your budget" class="input-field" />
+        <button class="btn" (click)="generateShoppingList()">Generate Shopping List</button>
+    </div>
+
+    <div class="results">
+        <h2 *ngIf="shoppingList.length">Your Shopping List:</h2>
+        <div *ngFor="let item of shoppingList" class="item-card">
+            <input type="checkbox" (change)="onItemChecked($event, item.name)" class="checkbox" />
+            <img [src]="imageUrls[item.name]" alt="{{ item.name }}" class="item-image" *ngIf="imageUrls[item.name]" />
+            <div class="details-left">
+                <h3>{{ item.name }}</h3>
+                <p>Quantity: {{ item.quantityunit }}</p>
+                <p>Calories: {{ item.calories }}</p>
+                <span class="price">{{ item.price.toFixed(2) }} DT</span>
+            </div>
+            <div class="details-right">
+                <h3>{{ item.category }}</h3>
+            </div>
+        </div>
+        <h3 *ngIf="totalCost">Total Cost: DT{{ totalCost.toFixed(2) }}</h3>
+        <button class="btn" (click)="generateReciepeList()">Generate Recipe List</button>
+        <p *ngIf="shoppingList.length === 0">No items can be bought within your budget.</p>
+    </div>
+</div>
+</body>

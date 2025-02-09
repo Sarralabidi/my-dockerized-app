@@ -1,0 +1,14 @@
+# Ignore node_modules & dependencies  
+node_modules/  
+package-lock.json  
+
+# Ignore build files  
+dist/  
+target/  
+
+# Ignore environment files (DO NOT PUSH SECRETS!)  
+.env  
+
+# Ignore Docker build artifacts  
+docker-compose.override.yml  
+

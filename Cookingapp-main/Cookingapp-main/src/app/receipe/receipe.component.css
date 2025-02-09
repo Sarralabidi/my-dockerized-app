@@ -1,0 +1,95 @@
+.recipe-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: #5a5a5a;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .recipe-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .recipe-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 280px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .recipe-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .recipe-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  
+  .recipe-content {
+    padding: 15px;
+  }
+  
+  .recipe-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .recipe-description {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 15px;
+  }
+  
+  .recipe-info {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .recipe-info span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .recipe-link {
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: #fff;
+    background-color: #ff6f61;
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .recipe-link:hover {
+    background-color: #ff4c3b;
+  }
+  
+  @media (max-width: 768px) {
+    .recipe-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

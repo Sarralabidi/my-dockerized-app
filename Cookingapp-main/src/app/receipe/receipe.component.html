@@ -1,0 +1,35 @@
+<div class="recipe-container">
+    <h2 class="section-title">Your Recipe Suggestions</h2>
+    <div class="recipe-cards">
+      <div class="recipe-card" *ngFor="let recipe of recipes">
+        <img [src]="recipe.image" alt="{{ recipe.title }}" class="recipe-image" />
+        <div class="recipe-content">
+          <h3 class="recipe-title">{{ recipe.title }}</h3>
+          <p class="recipe-description">A delicious recipe just for you!</p>
+          <div class="recipe-info">
+            <span class="recipe-time"><i class="fas fa-clock"></i> {{ recipe.readyInMinutes || 'N/A' }} mins</span>
+            <span class="recipe-servings"><i class="fas fa-users"></i> Serves {{ recipe.servings || 'N/A' }}</span>
+            <span class="recipe-likes"><i class="fas fa-thumbs-up"></i> Likes: {{ recipe.likes || 0 }}</span>
+          </div>
+          <div class="ingredients">
+            <h4>Missed Ingredients:</h4>
+            <ul>
+              <li *ngFor="let ingredient of recipe.missedIngredients">
+                {{ ingredient.amount }} {{ ingredient.unit }} {{ ingredient.name }}
+                <img *ngIf="ingredient.image" [src]="ingredient.image" alt="{{ ingredient.name }}" class="ingredient-image"/>
+              </li>
+            </ul>
+            <h4>Used Ingredients:</h4>
+            <ul>
+              <li *ngFor="let ingredient of recipe.usedIngredients">
+                {{ ingredient.amount }} {{ ingredient.unit }} {{ ingredient.name }}
+                <img *ngIf="ingredient.image" [src]="ingredient.image" alt="{{ ingredient.name }}" class="ingredient-image"/>
+              </li>
+            </ul>
+          </div>
+          <a [href]="recipe.sourceUrl" target="_blank" class="recipe-link">View Full Recipe</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
