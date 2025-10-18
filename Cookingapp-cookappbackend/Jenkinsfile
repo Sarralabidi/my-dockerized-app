@@ -19,7 +19,7 @@ stages {
 
     stage('Build with Maven') {
         steps {
-            dir('Cookingapp-cookappbackend') {
+            dir('Cookingapp-cookappbackend/Cookingapp-cookappbackend') {
                 echo '🔧 Building Spring Boot app with Maven...'
                 sh 'mvn clean package -DskipTests'
             }
@@ -30,7 +30,7 @@ stages {
         steps {
             echo '🐳 Building Docker image...'
             sh '''
-                docker build -t $DOCKERHUB_USER/$IMAGE_NAME:$IMAGE_TAG -f Cookingapp-cookappbackend/Dockerfile .
+                docker build -t $DOCKERHUB_USER/$IMAGE_NAME:$IMAGE_TAG -f Cookingapp-cookappbackend/Cookingapp-cookappbackend/Dockerfile .
             '''
         }
     }
