@@ -1,7 +1,6 @@
 pipeline {
 agent any
 
-```
 environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')   // Jenkins credentials ID
     DOCKERHUB_USER = 'sarralabidi984'                                 // Your Docker Hub username
@@ -65,6 +64,6 @@ post {
         echo '❌ Pipeline failed. Check logs in Jenkins.'
     }
 }
-```
+
 
 }
