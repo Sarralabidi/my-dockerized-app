@@ -55,8 +55,8 @@ stage('Deploy to Kubernetes') {
             sh '''
                 # Write content to file and use it
                 echo "$KUBECONFIG_CONTENT" > kubeconfig-temp
-                kubectl --kubeconfig=kubeconfig-temp apply -f k8s/deployment.yaml
-                kubectl --kubeconfig=kubeconfig-temp apply -f k8s/service.yaml
+                kubectl --kubeconfig=kubeconfig-temp apply -f Cookingapp-cookappbackend/k8s/deployment.yaml
+                kubectl --kubeconfig=kubeconfig-temp apply -f Cookingapp-cookappbackend/k8s/service.yaml
                 kubectl --kubeconfig=kubeconfig-temp get pods
                 rm -f kubeconfig-temp
             '''
