@@ -51,18 +51,16 @@ stages {
 stage('Deploy to Kubernetes') {
     steps {
         echo '🚀 Deploying to Kubernetes...'
-        script {
-            // This automatically sets up the kubeconfig context
-            kubeconfig(credentialsId: 'kubeconfig') {
-                sh '''
-                    kubectl apply -f k8s/deployment.yaml
-                    kubectl apply -f k8s/service.yaml
-                    echo "✅ Deployment successful!"
-                    kubectl get pods,services
-                '''
-            }
+        withCredentials([kubeconfigContent(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
+            sh '''
+                kubectl apply -f k8s/deployment.yaml
+                kubectl apply -f k8s/service.yaml
+                echo "✅ Deployment successful!"
+                kubectl get pods,services
+            '''
         }
-    }}
+    }
+}
 
 
 
