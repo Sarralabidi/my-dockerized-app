@@ -50,11 +50,18 @@ stages {
 
  stage('Deploy to Kubernetes') {
     steps {
-        script {
-            kubernetesDeploy(configs: 'k8s/deployment.yaml, k8s/service.yaml', kubeconfigId: 'kubeconfig')
+        echo '🚀 Deploying to Kubernetes...'
+        withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_FILE')]) {
+            sh '''
+                kubectl --kubeconfig=$KUBECONFIG_FILE apply -f k8s/deployment.yaml
+                kubectl --kubeconfig=$KUBECONFIG_FILE apply -f k8s/service.yaml
+                echo "✅ Deployment successful!"
+                kubectl --kubeconfig=$KUBECONFIG_FILE get pods,services
+            '''
         }
     }
 }
+    
 }
 
 post {
