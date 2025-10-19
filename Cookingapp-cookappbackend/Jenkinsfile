@@ -51,12 +51,14 @@ stages {
 stage('Deploy to Kubernetes') {
     steps {
         echo '🚀 Deploying to Kubernetes...'
-        withCredentials([kubeconfigContent(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
+        withCredentials([kubeconfigContent(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_CONTENT')]) {
             sh '''
-                kubectl apply -f k8s/deployment.yaml
-                kubectl apply -f k8s/service.yaml
-                echo "✅ Deployment successful!"
-                kubectl get pods,services
+                # Write content to file and use it
+                echo "$KUBECONFIG_CONTENT" > kubeconfig-temp
+                kubectl --kubeconfig=kubeconfig-temp apply -f k8s/deployment.yaml
+                kubectl --kubeconfig=kubeconfig-temp apply -f k8s/service.yaml
+                kubectl --kubeconfig=kubeconfig-temp get pods
+                rm -f kubeconfig-temp
             '''
         }
     }
