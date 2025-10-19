@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: cookingapp
-        image: sarralabidi984/cookingapp:latest
+        image: sarralabidi984/cookapp-backend:latest
         ports:
         - containerPort: 8080
