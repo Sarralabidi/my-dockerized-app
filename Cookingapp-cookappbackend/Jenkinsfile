@@ -48,6 +48,29 @@ stages {
         }
     }
 
+
+
+
+stage('Deploy MySQL to Kubernetes') {
+            steps {
+                echo '🐬 Deploying MySQL to Kubernetes...'
+                withCredentials([kubeconfigContent(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_CONTENT')]) {
+                    sh '''
+                        echo "$KUBECONFIG_CONTENT" > kubeconfig-temp
+                        kubectl --kubeconfig=kubeconfig-temp apply -f Cookingapp-cookappbackend/k8s/mysql-deployment.yaml
+                        kubectl --kubeconfig=kubeconfig-temp apply -f Cookingapp-cookappbackend/k8s/mysql-service.yaml
+                        echo "⏳ Waiting for MySQL to be ready..."
+                        kubectl --kubeconfig=kubeconfig-temp rollout status deployment/mysql --timeout=120s
+                        rm -f kubeconfig-temp
+                    '''
+                }
+            }
+        }
+
+
+
+    
+
 stage('Deploy to Kubernetes') {
     steps {
         echo '🚀 Deploying to Kubernetes...'
