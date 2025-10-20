@@ -19,12 +19,8 @@ spec:
         env:
         - name: MYSQL_DATABASE
           value: cookingappdb
-        - name: MYSQL_ROOT_PASSWORD
-          value: root
-        - name: MYSQL_USER
-          value: sarra
-        - name: MYSQL_PASSWORD
-          value: sarra123
+        - name: MYSQL_ALLOW_EMPTY_PASSWORD
+          value: "true"
         ports:
         - containerPort: 3306
           name: mysql
