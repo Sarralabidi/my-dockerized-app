@@ -31,7 +31,7 @@ stages {
                 dir('Cookingapp-cookappbackend/Cookingapp-cookappbackend') {
                     withSonarQubeEnv('MySonarQube') {
                         echo '🧠 Running SonarQube analysis...'
-                        sh 'mvn sonar:sonar -Dsonar.projectKey=cookapp -Dsonar.host.url=http://localhost:9000 -Dsonar.login=$SONAR_AUTH_TOKEN'
+                        sh 'mvn sonar:sonar -Dsonar.projectKey=cookapp -Dsonar.host.url=http://localhost:9000 -Dsonar.login=39946645-4ccc-4883-a50d-e419cf3f62a2'
                     }
                 }
             }
