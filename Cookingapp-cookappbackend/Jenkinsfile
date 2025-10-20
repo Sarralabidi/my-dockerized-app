@@ -27,15 +27,18 @@ stages {
     }
 
      stage('SonarQube Analysis') {
-            steps {
-                dir('Cookingapp-cookappbackend/Cookingapp-cookappbackend') {
-                    withSonarQubeEnv('MySonarQube') {
-                        echo '🧠 Running SonarQube analysis...'
-                        sh 'mvn sonar:sonar -Dsonar.projectKey=cookapp -Dsonar.host.url=http://localhost:9000 -Dsonar.login=39946645-4ccc-4883-a50d-e419cf3f62a2'
-                    }
+    steps {
+        dir('Cookingapp-cookappbackend/Cookingapp-cookappbackend') {
+            withSonarQubeEnv('MySonarQube') {
+                withCredentials([string(credentialsId: '39946645-4ccc-4883-a50d-e419cf3f62a2', variable: 'SONAR_AUTH_TOKEN')]) {
+                    echo '🧠 Running SonarQube analysis...'
+                    sh 'mvn sonar:sonar -Dsonar.projectKey=cookapp -Dsonar.host.url=http://localhost:9000 -Dsonar.login=$SONAR_AUTH_TOKEN'
                 }
             }
         }
+    }
+}
+
 
     stage('Build Docker Image') {
     steps {
