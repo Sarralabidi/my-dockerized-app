@@ -17,3 +17,12 @@ spec:
         image: sarralabidi984/cookapp-backend:latest
         ports:
         - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://mysql:3306/cookapp
+        - name: SPRING_DATASOURCE_USERNAME
+          value: sarra
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: sarra123
+        - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+          value: update
