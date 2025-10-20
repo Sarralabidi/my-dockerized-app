@@ -21,8 +21,8 @@ spec:
         - name: SPRING_DATASOURCE_URL
           value: jdbc:mysql://mysql:3306/cookapp
         - name: SPRING_DATASOURCE_USERNAME
-          value: sarra
+          value: root
         - name: SPRING_DATASOURCE_PASSWORD
-          value: sarra123
+          value: ""
         - name: SPRING_JPA_HIBERNATE_DDL_AUTO
           value: update
